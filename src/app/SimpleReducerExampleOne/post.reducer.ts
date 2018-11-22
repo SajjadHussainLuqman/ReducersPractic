@@ -5,31 +5,6 @@ export type AllActions = All.AllActionsClasses;
 
 const DefaultState: Student[] = [{ Id: 1, Name: "Sajjad", Address: "Rahim Yar Khan" }];
 
-function pushToArray(arr, obj) {
-
-    const index = arr.findIndex((e) => e.id === obj.id);
-
-    if (index === -1) {
-        arr.push(obj);
-    } else {
-        arr[index] = obj;
-    }
-}
-
-function showUpdatedItem(newItem){
-    let updateItem = this.itemArray.items.find(this.findIndexToUpdate, newItem.id);
-
-    let index = this.itemArray.items.indexOf(updateItem);
-
-
-    this.itemArray.items[index] = newItem;
-
-  }
-
- function findIndexToUpdate(newItem) { 
-        return newItem.id === this;
-  }
-
 export function StudentReducerFunction(state: Student[] = DefaultState, action: AllActions) {
     switch (action.type) {
 
@@ -58,7 +33,8 @@ export function StudentReducerFunction(state: Student[] = DefaultState, action: 
             return state.filter((el) => el.Id != product.Id);
 
         case All.PostActionTypes.ResetEnum:
-            return DefaultState;
+            this.state=defaultStatus;
+            return this.state;
 
         default:
             return state;

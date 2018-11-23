@@ -1,11 +1,11 @@
-import * as All from "./post.actions";
-import { Student } from './post.model';
+import * as All from "../Actions/post.actions";
+import { Student } from '../../Models/post.model';
 
 export type AllActions = All.AllActionsClasses;
 
 const DefaultState: Student[] = [{ Id: 1, Name: "Sajjad", Address: "Rahim Yar Khan" }];
 
-export function StudentReducerFunction(state: Student[] = DefaultState, action: AllActions) {
+export function PostsReducerFunction(state: Student[] = DefaultState, action: AllActions) {
     switch (action.type) {
 
         case All.PostActionTypes.AddEnum:
@@ -33,8 +33,10 @@ export function StudentReducerFunction(state: Student[] = DefaultState, action: 
             return state.filter((el) => el.Id != product.Id);
 
         case All.PostActionTypes.ResetEnum:
-            this.state=defaultStatus;
-            return this.state;
+        {
+            state=[{ Id: 1, Name: "Sajjad", Address: "Rahim Yar Khan" }];
+            return state;
+        }
 
         default:
             return state;

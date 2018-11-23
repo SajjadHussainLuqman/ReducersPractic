@@ -1,27 +1,29 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h5>
-    Welcome to {{ title }}!
-  </h5>
-</div>
-<table>
-  <tr>
-    <td>Id</td>
-    <td>Name</td>
-    <td>Address</td>
-  </tr>
-  <tr *ngFor="let a of cart">
-    <td>{{ a.Id }}</td>
-    <td>{{ a.Name }}</td>
-    <td>{{ a.Address }}</td>
-  </tr>
-</table>
-<br>
+    <h3>
+      Welcome to Reducer Practice
+    </h3>
+  </div>
 
-<div>
-<button (click)="AddStudent()">Add</button>
-<button (click)="AddStudentList()">Add List</button>
-<button (click)="UpdateStudentList()">Update Record</button>
-<button (click)="RemoveStudent()">Remove</button>
-<button (click)="ResetStudent()">Reset</button>
+<div style="padding:5px">
+    <ul class="nav nav-tabs">
+        <li routerLinkActive="active">
+            <a routerLink="home">Home</a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="experts">Experts</a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="users">Users</a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="posts">Posts</a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="login">Logout</a>
+        </li>
+    </ul>
+    <br/>
+    <router-outlet></router-outlet>
 </div>
+
+<router-outlet></router-outlet>

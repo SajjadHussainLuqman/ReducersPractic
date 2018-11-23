@@ -1,0 +1,58 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<style>
+  table {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    border-collapse: collapse;
+  }
+
+  td {
+    border: 1px solid #369;
+    padding: 5px;
+  }
+
+  th {
+    border: 1px solid #369;
+    padding: 5px;
+  }
+</style>
+
+<div style="text-align:center">
+  <h5>
+    Welcome to {{ title }}!
+  </h5>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of cart">
+      <td>{{ a.Id }}</td>
+      <td>{{ a.Name }}</td>
+      <td>{{ a.Address }}</td>
+    </tr>
+    <tr *ngIf="!cart || cart.length==0">
+      <td colspan="5">
+        No post to display
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<div>
+  <button (click)="AddStudent()" class="btn-default btn">Add</button>
+  <button (click)="AddStudentList()" class="btn-default btn">Add List</button>
+  <button (click)="UpdateStudentList()" class="btn-default btn">Update Record</button>
+  <button (click)="RemoveStudent()" class="btn-default btn">Remove</button>
+  <button (click)="ResetStudent()" class="btn-default btn">Reset</button>
+</div>

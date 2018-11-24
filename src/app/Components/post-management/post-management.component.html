@@ -34,7 +34,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let a of cart">
+    <tr *ngFor="let a of cart | async">
       <td>{{ a.Id }}</td>
       <td>{{ a.Name }}</td>
       <td>{{ a.Address }}</td>

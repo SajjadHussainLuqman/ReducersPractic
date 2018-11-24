@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Store } from '@ngrx/store';
 import * as CRUD from '../../StoreData/Actions/expert.actions';
+import { IAppState } from '../../StoreData/Reducers/index';
 
 import { ExpertService } from "../../Services/Expert.service";
 import { SharedService } from "../../Services/Shared.service";
@@ -22,24 +23,23 @@ export class ExpertManagementComponent implements OnInit {
   _HoldServiceRef: Subscription;
   _StoreListLength : number;
 
-  cart: Observable<Expert[]>
+  cart: Observable<Expert[]>;
 
-  constructor(private _store: Store<any>,
+  constructor(private _store: Store<IAppState>,
     private _Service: ExpertService,
     private _shared: SharedService,
     private _router: Router,
     private _http: HttpClient) {
 
-    this._store.select('Experts').subscribe(x => {
-      this.cart = x;
-      this._StoreListLength = x.length;
-    });
+    this.cart = this._store.select('Experts');
 
     this._Service = new ExpertService(_http, _shared);
   }
 
   ngOnInit() {
-    if (this.cart == null || this.cart == undefined ||  this._StoreListLength == 0) {
+    this.cart.subscribe(result => { this._StoreListLength=result.length});
+
+    if (this.cart == null || this.cart == undefined || this._StoreListLength == 0 ) {
 
      	this._Service.GetWithNoAuthentication(ApiEndPoints.Experts.toString())
                               .subscribe( (x) => {

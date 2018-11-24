@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import * as CRUD from '../../StoreData/Actions/post.actions';
-
+import { IAppState } from '../../StoreData/Reducers/index';
 
 @Component({
   selector: 'app-post-management',
@@ -17,16 +17,12 @@ export class PostManagementComponent implements OnInit {
 
   cart: Observable<Array<any>>
   
-  constructor(private _store:Store<any>){
-     this._store.select('AllPost').subscribe(x=>
-      {
-        this.cart =x;
-      });
+  constructor(private _store:Store<IAppState>){
+    this.cart= this._store.select('AllPost');
   }
 
   ngOnInit()
   {
-   console.log(this.cart);
   }
 
   AddStudent()

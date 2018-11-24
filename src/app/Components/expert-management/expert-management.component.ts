@@ -39,10 +39,9 @@ export class ExpertManagementComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger;
     if (this.cart == null || this.cart == undefined ||  this._StoreListLength == 0) {
 
-      this._HoldServiceRef =	this._Service.GetWithNoAuthentication(ApiEndPoints.Experts.toString())
+     	this._Service.GetWithNoAuthentication(ApiEndPoints.Experts.toString())
                               .subscribe( (x) => {
                                   this._store.dispatch(new CRUD.ExpertAddListActionClass(x));
                                 },
@@ -53,7 +52,6 @@ export class ExpertManagementComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this._HoldServiceRef.unsubscribe();
   }
 
   Add() {

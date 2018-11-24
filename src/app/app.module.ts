@@ -6,9 +6,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 
-import { PostsReducerFunction } from "./StoreData/Reducers/post.reducer";
-import { ExpertReducerFunction } from './StoreData/Reducers/expert.reducer';
-import { RouterModule, Routes, ROUTES } from '@angular/router';
+// All Reducers
+// import { PostsReducerFunction } from "./StoreData/Reducers/post.reducer";
+// import { ExpertReducerFunction } from './StoreData/Reducers/expert.reducer';
+
+import { reducers } from './StoreData/Reducers/index';
+
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
 import { ExpertManagementComponent } from './Components/expert-management/expert-management.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -44,7 +48,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    StoreModule.forRoot({ AllPost: PostsReducerFunction,Experts : ExpertReducerFunction}),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge:26 })
   ],
   providers: [],

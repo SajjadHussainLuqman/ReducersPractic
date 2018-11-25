@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 import { Store } from '@ngrx/store';
 import * as CRUD from '../../StoreData/Actions/expert.actions';
 import { IAppState } from '../../StoreData/Reducers/index';
 
-import { ExpertService } from "../../Services/Expert.service";
-import { SharedService } from "../../Services/Shared.service";
-import { ApiEndPoints } from 'src/app/Services/ApiEndPoints';
 import { Expert } from '../../Models/index';
 
 @Component({
@@ -25,30 +20,11 @@ export class ExpertManagementComponent implements OnInit {
 
   cart: Observable<Expert[]>;
 
-  constructor(private _store: Store<IAppState>,
-    private _Service: ExpertService,
-    private _shared: SharedService,
-    private _router: Router,
-    private _http: HttpClient) {
-
+  constructor(private _store: Store<IAppState>) {
     this.cart = this._store.select('Experts');
-
-    this._Service = new ExpertService(_http, _shared);
   }
 
   ngOnInit() {
-    this.cart.subscribe(result => { this._StoreListLength=result.length});
-
-    if (this.cart == null || this.cart == undefined || this._StoreListLength == 0 ) {
-
-     	this._Service.GetWithNoAuthentication(ApiEndPoints.Experts.toString())
-                              .subscribe( (x) => {
-                                  this._store.dispatch(new CRUD.ExpertAddListActionClass(x));
-                                },
-                                error => { 
-                                  console.log( error ); 
-                                });
-    }
   }
 
   ngOnDestroy() {
@@ -72,20 +48,7 @@ export class ExpertManagementComponent implements OnInit {
   }
 
   AddList() {
-    this._store.dispatch(new CRUD.ExpertAddListActionClass(
-      [{
-        Id: 4,
-        Name: 'Rizwan',
-        Address: 'Kot Samaba',
-        Age: 25
-      },
-      {
-        Id: 5,
-        Name: 'Mazhar',
-        Address: 'Karachi',
-        Age: 32
-      }]
-    ));
+    this._store.dispatch(new CRUD.ExpertListLoadActionClass());
   }
 
   Remove() {

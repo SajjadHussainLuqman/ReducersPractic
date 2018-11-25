@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule  } from "@angular/common/http";
+
 import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {  EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 
@@ -11,6 +13,7 @@ import { AppComponent } from './app.component';
 // import { ExpertReducerFunction } from './StoreData/Reducers/expert.reducer';
 
 import { reducers } from './StoreData/Reducers/index';
+import { effects } from './StoreData/Effects/index';
 
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
@@ -49,6 +52,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({ maxAge:26 })
   ],
   providers: [],

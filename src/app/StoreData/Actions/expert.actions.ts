@@ -4,6 +4,7 @@ export enum ExpertActionTypes {
     AddEnum    = "[Expert] AddEnum",
     UpdateEnum = "[Expert] UpdateEnum",
     AddListEnum = "[Expert] AddList",
+    LoadListEnum = "[Expert] LoadList",
     DeleteEnum = "[Expert] DeleteEnum",
     ResetEnum  = "[Expert] ResetEnum",
 }
@@ -18,6 +19,11 @@ export class ExpertUpdateActionClass implements Action
 {
     readonly type = ExpertActionTypes.UpdateEnum;
     constructor(public payload: any){}
+}
+
+export class ExpertListLoadActionClass implements Action
+{
+    readonly type = ExpertActionTypes.LoadListEnum;
 }
 
 export class ExpertAddListActionClass implements Action
@@ -37,4 +43,4 @@ export class ExpertResetActionClass implements Action
     readonly type = ExpertActionTypes.ResetEnum;
 }
 
-export type ExpertAllActionsClasses = ExpertAddActionClass | ExpertDeleteActionClass | ExpertResetActionClass | ExpertAddListActionClass | ExpertUpdateActionClass;
+export type ExpertAllActionsClasses = ExpertAddActionClass | ExpertDeleteActionClass | ExpertResetActionClass | ExpertAddListActionClass | ExpertUpdateActionClass | ExpertListLoadActionClass;

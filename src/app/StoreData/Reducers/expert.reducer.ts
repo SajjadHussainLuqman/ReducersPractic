@@ -24,10 +24,13 @@ export function ExpertReducerFunction(state = DefaultValue, action: AllActions)
         }
 
         case All.ExpertActionTypes.AddListEnum:
-            {
+        {
                 state.push.apply(state, action.payload);
                 return state;
-            }
+        }
+
+        case All.ExpertActionTypes.LoadListEnum:
+        return [...state]
 
         case All.ExpertActionTypes.DeleteEnum:
             let product = action.payload

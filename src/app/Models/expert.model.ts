@@ -4,4 +4,7 @@ export class Expert
     Name : string;
     Address : string;
     Age : number;
+    UserName : string;
+    Password : string;
+    UserType : string;
 }

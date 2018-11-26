@@ -2,18 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule  } from "@angular/common/http";
 
-import { StoreModule } from "@ngrx/store";
+import { StoreModule , ActionReducerMap, ActionReducer, MetaReducer} from "@ngrx/store";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {  EffectsModule } from '@ngrx/effects';
 
+import { reducers,effects,metaReducers } from './StoreData/index';
+
+
 import { AppComponent } from './app.component';
-
-// All Reducers
-// import { PostsReducerFunction } from "./StoreData/Reducers/post.reducer";
-// import { ExpertReducerFunction } from './StoreData/Reducers/expert.reducer';
-
-import { reducers } from './StoreData/Reducers/index';
-import { effects } from './StoreData/Effects/index';
 
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
@@ -51,7 +47,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers,{metaReducers}),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({ maxAge:26 })
   ],

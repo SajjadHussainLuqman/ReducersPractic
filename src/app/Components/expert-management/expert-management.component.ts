@@ -59,4 +59,9 @@ export class ExpertManagementComponent implements OnInit {
     this._store.dispatch(new CRUD.ExpertResetActionClass());
   }
 
+  ResetAllApplicationState()
+  {
+    this._store.dispatch({type:"Logout"});
+  }
+
 }

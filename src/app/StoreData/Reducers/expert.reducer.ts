@@ -3,7 +3,7 @@ import * as All from '../Actions/expert.actions';
 
 export type AllActions = All.ExpertAllActionsClasses;
 
-const DefaultValue : Models.Expert[] = [{ Id: 1, Name: "Sajjad", Address: "Rahim Yar Khan",Age:31 }];
+const DefaultValue : Models.Expert[] = [];
 
 export function ExpertReducerFunction(state = DefaultValue, action: AllActions)
 {
